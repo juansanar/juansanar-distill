@@ -2,6 +2,7 @@
 title: "Juan C. Sanchez-Arias, MD, PhD"
 site: distill::distill_website
 image: img/juansanar_pro-pic_02_165kb.jpg
+favicon: img/icon.png 
 links:
   - label: '<i class="fab fa-twitter"></i> Twitter'
     url: "https://twitter.com/juan_sanar"
