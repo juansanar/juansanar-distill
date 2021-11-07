@@ -1,0 +1,62 @@
+---
+title: "Juan C. Sanchez-Arias, MD, PhD"
+sute: distill::distill_website
+image: img/juansanar_pro-pic_02_165kb.jpg
+links:
+  - label: '<i class="fab fa-twitter"></i> Twitter'
+    url: "https://twitter.com/juan_sanar"
+  - label: '<i class="fab fa-github"></i> GitHub'
+    url: "https://github.com/juansanar"
+  - label: '<i class="fab fa-linkedin"></i> LinkedIn'
+    url: "https://linkedin.com/juancsanchezarias"
+  - label: '<i class="fas fa-envelope"></i> Email'
+    url: "mailto:juansa@uvic.ca"
+twitter:
+  creator: "@juan_sanar"
+  site: "@juan_sanar"
+preview: img/juansanar_pro-pic_02_165kb.jpg
+output:
+  postcards::trestles
+---
+
+```{r setup, message=FALSE, include=FALSE, echo=FALSE}
+library(metathis)
+meta() %>%
+  meta_description(
+    "The personal website of Juan C. Sanchez-Arias"
+  ) %>%
+  #meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
+  meta_viewport() %>%
+  meta_social(
+    title = "https://www.juansanar.com/",
+    url = "https://www.juansanar.com/",
+    image = "https://github.com/shannonpileggi/pipinghotdata_distill/blob/master/shannon-circle.png?raw=true",
+    image_alt = "A photo of Shannon Pileggi",
+    og_type = "website",
+    og_author = c("Juan C. Sanchez-Arias"),
+    twitter_card_type = "summary",
+    twitter_creator = "@juan_sanar"
+  )
+```
+ 
+## Bio
+
+Juan C. Sanchez-Arias is a Postdoctoral Fellow in the Division of Medical Science at the University of Victoria. Trained as medical doctor and neuroscientist, Juan is currently researching the cellular and molecular mechanisms underlying cardiac arrhythmia and other central nervous system manifestations associated with a novel genetic variant in the ion channel adapter protein ankyrin B. His approach to research combines medical genetics and model organism investigation, fixed and live cell microscopy, and computational modelling of protein interaction networks and cellular physiology. His other interest include systematic bio-image analysis workflows, open science, and science outreach and communication.
+
+## Education
+
+**University of Victoria** | Victoria, BC, Canada
+
+Ph.D. in Neuroscience | January 2015 - April 2020
+
+**Universidad del Valle, School of Medicine** | Cali, Valle, Colombia
+
+Doctor in Medicine | August 2007 - September 2014
+
+## Experience
+
+**University of Victoria** | Postdoctoral Fellow | August 2020 - Present
+
+**Hospital Universitario del Valle ESE** | Medical Intern | September 2013 - September 2014
+
+**Centro de Estudios Cerebrales, Universidad del Valle** | Research Intern | February 2014 - July 2014

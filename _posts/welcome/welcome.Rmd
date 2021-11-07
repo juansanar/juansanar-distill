@@ -1,0 +1,49 @@
+---
+title: "New, skills, new site, same Juan"
+description: |
+  Bye Hugo Academic, Hola distill!
+  
+  *The views in my personal website do not reflect those of my employer nor affiliations.
+author:
+  - name: Juan C. Sanchez-Arias 
+    url: https://www.juansanar.com/
+date: 11-06-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+I have been rocking my personal website through a GitHub + Netlify concoction since its inception in Fall 2018 as I prepared for SfN 2018 in San Diego. During that fall I kept finding ["twittertorials"](https://twitter.com/dsquintana/status/993410504570888192?s=20) on building a website with the above tools and how important an online presence was for academics, especially for us Early Career Researchers.
+
+![Screenshot from old website built with hugo-academic + GitHub + Netlify](img/old-website_small.png)
+
+In that moment, I decided not to use RStudio and blogdown as part of the process and made all my editing on [VS Code](https://code.visualstudio.com/) as I was at the peak of my honeymoon with the mark-up language `Markdown` (a honeymoon that continues until today, I love markdown!) and was just getting a grasp of R and RStudio. 
+
+Managing a static website through hugo-academic was super fun and I really enjoyed the experience. I gained numerous skills that I always wanted to build up on as someone who has always loved tech, the internet, and more recently, programming.
+
+I'll miss the site and its features, but I am looking forward to explore and exploit the `distill` package for R. I find myself using R and RStudo more frequently for my day-to-day activities but also my hobbies and professional development, so this seemed like the most natural step moving forward.
+
+I'm also hopeful that by having my website workflow well integrated with R and RStudio I can continue to advance my data science journey, because let's face it, we all are data nerd deep inside and love nice plots
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r plot, include=TRUE, echo=TRUE}
+
+# Circle plot (example based on https://www.r-graph-gallery.com/226-plot-types-for-circular-plot.html)
+circlize::circos.par("track.height" = 0.4)
+
+data = data.frame(
+  factor = sample(seq(1,24), 1000, replace = TRUE),
+  x = rnorm(1000),
+  y = runif(1000)
+)
+
+# Step1: Initialise the chart giving factor and x-axis.
+circlize::circos.initialize( factors=data$factor, x=data$x )
+
+circlize::circos.trackHist(data$factor, data$x, bg.col = "white", col = "#69b3a2")
+
+```
+
+
