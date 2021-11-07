@@ -11,6 +11,10 @@ links:
     url: "https://linkedin.com/juancsanchezarias"
   - label: '<i class="fas fa-envelope"></i> Email'
     url: "mailto:juansa@uvic.ca"
+  - label: '<i class="fas fa-graduation-cap"></i> Google Scholar'
+    url: 'https://scholar.google.com/citations?user=2hJ3XvwAAAAJ&hl=en'
+  - label: '<i class="fas fa-file-pdf"></i> CV'
+    url: files/juansanar_cv.pdf
 twitter:
   creator: "@juan_sanar"
   site: "@juan_sanar"
@@ -30,8 +34,8 @@ meta() %>%
   meta_social(
     title = "https://www.juansanar.com/",
     url = "https://www.juansanar.com/",
-    image = "https://github.com/shannonpileggi/pipinghotdata_distill/blob/master/shannon-circle.png?raw=true",
-    image_alt = "A photo of Shannon Pileggi",
+    image = "https://github.com/juansanar/juansanar-distill/blob/main/img/juansanar_pro-pic_02_165kb.jpg",
+    image_alt = "A photo of Juan C. Sanchez-Arias",
     og_type = "website",
     og_author = c("Juan C. Sanchez-Arias"),
     twitter_card_type = "summary",
@@ -47,11 +51,11 @@ Juan C. Sanchez-Arias is a Postdoctoral Fellow in the Division of Medical Scienc
 
 **University of Victoria** | Victoria, BC, Canada
 
-Ph.D. in Neuroscience | January 2015 - April 2020
+*Ph.D. in Neuroscience* | January 2015 - April 2020
 
 **Universidad del Valle, School of Medicine** | Cali, Valle, Colombia
 
-Doctor in Medicine | August 2007 - September 2014
+*Doctor in Medicine* | August 2007 - September 2014
 
 ## Experience
 
@@ -60,3 +64,15 @@ Doctor in Medicine | August 2007 - September 2014
 **Hospital Universitario del Valle ESE** | Medical Intern | September 2013 - September 2014
 
 **Centro de Estudios Cerebrales, Universidad del Valle** | Research Intern | February 2014 - July 2014
+
+## Memberships
+
+**Canadian Cardiovascular Society** | 2021 - Present
+
+**Colegio Colombiano de Neurociencias** | 2021 - Present
+
+**Society for Neuroscience** | 2016 - Present
+
+**Canadian Association for Neuroscience** | 2015 - Present
+
+
