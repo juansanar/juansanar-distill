@@ -20,7 +20,7 @@ twitter:
   creator: "@juan_sanar"
   site: "@juan_sanar"
 base_url: https://www.juansanar.com/
-preview: https://www.juansanar.com/img/juansanar_pro-pic_02_165kb.jpg
+preview: img/juansanar_pro-pic_02_165kb.jpg
 output:
   postcards::trestles
 ---
@@ -36,7 +36,7 @@ meta() %>%
   meta_social(
     title = "https://www.juansanar.com/",
     url = "https://www.juansanar.com/",
-    image = "https://github.com/juansanar/juansanar-distill/blob/main/img/juansanar_pro-pic_02_165kb.jpg",
+    image = "https://www.juansanar.com/img/juansanar_pro-pic_02_165kb.jpg",
     image_alt = "A photo of Juan C. Sanchez-Arias",
     og_type = "website",
     og_author = c("Juan C. Sanchez-Arias"),
