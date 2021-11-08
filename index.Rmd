@@ -19,7 +19,8 @@ links:
 twitter:
   creator: "@juan_sanar"
   site: "@juan_sanar"
-preview: img/juansanar_pro-pic_02_165kb.jpg
+base_url: https://www.juansanar.com/
+preview: https://www.juansanar.com/img/juansanar_pro-pic_02_165kb.jpg
 output:
   postcards::trestles
 ---
