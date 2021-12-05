@@ -47,7 +47,7 @@ meta() %>%
  
 ## Bio
 
-Juan C. Sanchez-Arias is a Postdoctoral Fellow in the Division of Medical Science at the University of Victoria. Trained as medical doctor and neuroscientist, Juan is currently researching the cellular and molecular mechanisms underlying cardiac arrhythmia and other central nervous system manifestations associated with a novel genetic variant an ion channel adapter protein. His research approach combines clinical and model organism investigation, fixed and live cell microscopy, and computational modelling of protein interaction networks and cellular physiology. His other interests include systematic bio-image analysis workflows, open science, and science outreach and communication.
+Juan C. Sanchez-Arias is a Postdoctoral Fellow in the Division of Medical Science at the University of Victoria. Trained as medical doctor and neuroscientist, Juan is currently researching the cellular and molecular mechanisms underlying cardiac arrhythmia and other central nervous system manifestations associated with in a novel genetic variant an ion channel adapter protein. His research approach combines clinical and model organism investigation, fixed and live cell microscopy, and computational modelling of protein interaction networks and cellular physiology. His other interests include systematic bio-image analysis workflows, open science, and science outreach and communication.
 
 ## Education
 
