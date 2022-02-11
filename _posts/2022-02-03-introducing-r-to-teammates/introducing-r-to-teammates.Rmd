@@ -1,6 +1,6 @@
 ---
 title: "IntRoducing R to your team - Part 01"
-description: 
+description: |
   Friends don't let friends pay licenses for stats software.
 author:
   - name: Juan C. Sanchez-Arias
@@ -9,6 +9,10 @@ date: 2022-02-03
 output:
   distill::distill_article:
     self_contained: false
+categories:
+  - R
+  - data science
+  - tutorial
 ---
 
 
