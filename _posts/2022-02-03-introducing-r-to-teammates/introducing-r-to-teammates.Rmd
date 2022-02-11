@@ -1,5 +1,5 @@
 ---
-title: "IntRoducing R to teammates"
+title: "IntRoducing R to your team - Part 01"
 description: 
   Friends don't let friends pay licenses for stats software.
 author:
@@ -41,3 +41,5 @@ There's quite a selection of software tools [available](https://en.wikipedia.org
 - Statistical forward programming language (made by statistician for statistics)
 
 - Great IDE integration (Hi there [RStudio!](https://www.rstudio.com/) `r emo::ji("smile")`)
+
+> Congratulation! You are now ready to embark your data journey. Ya`r fa("r-project", fill = "steelblue")`! 

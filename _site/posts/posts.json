@@ -1,7 +1,7 @@
 [
   {
     "path": "posts/2022-02-03-introducing-r-to-teammates/",
-    "title": "IntRoducing R to teammates",
+    "title": "IntRoducing R to lab team - Part 01",
     "description": "Friends don't let friends pay licenses for stats software.",
     "author": [
       {
@@ -11,10 +11,10 @@
     ],
     "date": "2022-02-03",
     "categories": [],
-    "contents": "\r\nWhat is ?\r\nAs defined by The R Foundation,  is “a language and environment for statistical computing and graphics”. In other words, you can use  to carry on a wide variety of stats, visualize data (in the most beautiful ways out there), as well as implement many other purposes extending beyond statistics (this html document and website was created using !)\r\nYou can get  directly through The R Project website. In their homepage, they’ll have listed the latest available version of R (4.1.2 “Bird Hippie” at the time of writing this post).  is available for the main operating systems (i.e., GNU/Linux, Windows, and macOS). \r\nWhy ?\r\nIs  the ultimate statistical software? Heck yeah! Is it the only option to do stats for your research or hobbies? No. \r\n\r\nThere’s quite a selection of software tools available. I gravitate to R for the following reasons:\r\nFree\r\nOpen source\r\nExtensible\r\nStatistical forward programming language (made by statistician for statistics)\r\nGreat IDE integration (Hi there RStudio! 😄)\r\n\r\n\r\n\r\n",
+    "contents": "\r\nWhat is ?\r\nAs defined by The R Foundation,  is “a language and environment for statistical computing and graphics”. In other words, you can use  to carry on a wide variety of stats, visualize data (in the most beautiful ways out there), as well as implement many other purposes extending beyond statistics (this html document and website was created using !)\r\nYou can get  directly through The R Project website. In their homepage, they’ll have listed the latest available version of R (4.1.2 “Bird Hippie” at the time of writing this post).  is available for the main operating systems (i.e., GNU/Linux, Windows, and macOS). \r\nWhy ?\r\nIs  the ultimate statistical software? Heck yeah! Is it the only option to do stats for your research or hobbies? No. \r\n\r\nThere’s quite a selection of software tools available. I gravitate to R for the following reasons:\r\nFree\r\nOpen source\r\nExtensible\r\nStatistical forward programming language (made by statistician for statistics)\r\nGreat IDE integration (Hi there RStudio! 😄)\r\n\r\nCongratulation! You are now ready to embark your data journey. Ya!\r\n\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2022-02-05T11:27:26-08:00",
-    "input_file": "introducing-r-to-teammates.knit.md"
+    "last_modified": "2022-02-10T23:42:23-08:00",
+    "input_file": {}
   },
   {
     "path": "posts/welcome/",
