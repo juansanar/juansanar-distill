@@ -16,6 +16,8 @@ links:
     url: 'https://scholar.google.com/citations?user=2hJ3XvwAAAAJ&hl=en'
   - label: '<i class="fas fa-file-pdf"></i> CV'
     url: files/juansanar_cv.pdf
+  - label: '<i class="fas fa-file-pdf"></i> Resume'
+    url: files/juansanar_1pager.pdf
 twitter:
   creator: "@juan_sanar"
   site: "@juan_sanar"
