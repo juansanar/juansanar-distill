@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2022-04-03-got-528-tab-problems-but-time-aint-one/",
+    "title": "Got 528 tab problems",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Juan C. Sanchez-Arias",
+        "url": "https://www.juansanar.com/"
+      }
+    ],
+    "date": "2022-04-03",
+    "categories": [],
+    "contents": "\r\n\r\n\r\nHow many times have you told to yourself: \"I’ll leave this X number of tabs open for now and will check them later to complete (insert task)?\r\n\r\nThe revolutionary introduction of tabs to browsers initiated by “InternetWorks” (developed by BookLink Technologies) and popularized by Mozilla Firefox has allowed us since the early 2000’s to open as many tabs as a user wants within a single browser window, limited only by the user’s RAM and tolerability to unreadable tabs in the browser window. This combined with the increasingly available RAMs in computers (my main desktop rig harbours 32 GB for example) and the expandability of desktops within the same operating system environment can quickly create a disaster of opened tabs if one doesn’t pay attention to this matter.\r\nAs exemplified in the image above, I have fallen into the bottomless pit of multiple browsers, with multiple tabs across multiple desktop instances. The result: 528 tabs open. Yes, 528 tabs. Open. All the time. This also means I haven’t shutdown my computer in a while and even when I did due to priority updates for Windows Security settings, I immediately restored my browser windows and all of its 528 tabs.\r\n\r\nBut why?\r\n\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2022-04-04T10:41:04-07:00",
+    "input_file": "got-528-tab-problems-but-time-aint-one.knit.md"
+  },
+  {
     "path": "posts/2022-02-03-introducing-r-to-teammates/",
     "title": "IntRoducing R to your team - Part 01",
     "description": "Friends don't let friends pay licenses for stats software.",
