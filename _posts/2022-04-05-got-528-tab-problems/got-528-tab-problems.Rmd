@@ -20,7 +20,7 @@ meta() %>%
   #meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
   meta_viewport() %>%
   meta_social(
-    title = "Got 528 tab problems",
+    title = "Blog - Got 528 tab problems",
     url = "https://www.juansanar.com/blog/2022-04-05-got-528-tab-problems",
     image = "https://www.juansanar.com/posts/2022-04-05-got-528-tab-problems/img/wordcloud-1.png",
     image_alt = "528 tabs in a single wordcloud",
