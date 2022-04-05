@@ -74,7 +74,7 @@ In other words, I was using multiple tabs as a form of personal knowledge manage
 
 > Personal knowledge management? A [Personal Knowledgement Management (PKM)](https://en.wikipedia.org/wiki/Personal_knowledge_management) is a process of colelcting information in a structured manner so it is retrievable, shareable, and escalable. In simpler terms, a system that can be used as your second brain. I will talk more about this in a separate post.
 
-<p class = "spoiler">I found a PKM that meets my needs and sort of behaves like a brain. Plus, it checks some of my favourite things: markdown-based, local first, and FOSS.</p>
+<p class = "spoiler">I found a PKM that meets my needs and sort of behaves like a brain. Plus, it checks some of my favourite things: markdown-based, local first, and FOSS. This PKM is called [dendron](https://www.dendron.so/)</p>
 
 It is [#TidyTuesday](https://twitter.com/hashtag/tidytuesday?src=hashtag_click) after all, so let's explore what were the most common words present in those open tabs.
 
