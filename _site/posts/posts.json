@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2022-05-11-zotero-01/",
+    "title": "Need help managing your references? \"El Zotero\" to the rescue!",
+    "description": "In the Lands in Between bibliographies, select Zotero as your hero.",
+    "author": [
+      {
+        "name": "Juan C. Sanchez-Arias",
+        "url": "https://www.juansanar.com/"
+      }
+    ],
+    "date": "2022-05-11",
+    "categories": [],
+    "contents": "\r\nIt’s 2022! Use a reference manager ffs\r\nThe tradition of passing information to one generation another one has allowed us to use knowledge to our advantage (TODO REF). However, successfully achieving this requires the ability to track down the origins of such knowledge and related observations, opinions, etc. by adding small notes about them within our writing (TODO REF) as references or footnotes. In the past, this was done manually of course (and you’ll be surprised how many people still follow this ice age practice) and with the development of technology (e.g., personal computers, text processing software, etc), this labour intensive task can be somewhat automated (you still need to gather the information and make sense of it of course, though one day some dystopian AI might do a better job).\r\nAnother challenge that accumulating knowledge brings is managing the sheer amount of content. I wrote a small tidbit about the advantages of using a personal knowledge management tool. In this post, I will focus on managing references, specifically, I will try to convince you should use a reference manager fos:\r\nOrganizing your information sources (e.g., articles, books chapters, dissertations, newspapers, etc).\r\nInserting and formating citations into your text editor of preference (e.g., MS Word, LibreOffice, Zettlr).\r\nCreating and formatting a bibliography.\r\nSo howw do we deal with all this information? Specialized software such as reference manager are fundamental aids when citing knowledge in our writing, especially within the ivory walls of academia, where we (“we” as the academic collective through history) have created rules and style formats for this purpose, to the point that almost every single scholarly magazine has developed a format that best suites their copyediting and styling.\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2022-05-11T18:02:00-07:00",
+    "input_file": "need-help-managing-your-references-el-zotero-to-the-rescue.knit.md"
+  },
+  {
     "path": "posts/2022-04-05-got-528-tab-problems/",
     "title": "Got 528 tab problems",
     "description": "but defeat ain't one.",
