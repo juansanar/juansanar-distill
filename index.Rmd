@@ -17,7 +17,7 @@ links:
   - label: '<i class="fas fa-file-pdf"></i> CV'
     url: files/juansanar_cv.pdf
   - label: '<i class="fas fa-file-pdf"></i> Resume'
-    url: files/juansanar_1pager.pdf
+    url: files/juansanar_resume.pdf
 twitter:
   creator: "@juan_sanar"
   site: "@juan_sanar"
