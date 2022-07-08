@@ -9,7 +9,10 @@ date: 2022-07-04
 output:
   distill::distill_article:
     self_contained: false
-draft: false
+categories:
+  - PKM
+  - Research
+  - Writing
 ---
 
 
@@ -57,15 +60,24 @@ xaringanExtra::use_panelset()
 
 ### Zotero {.panel-name}
 
-asdf
+[Zotero](https://www.zotero.org/) is a free and open source. They market themselves as an "easy-to-use tool to help you collect, organize, annotate, cite, and share research". Their browser extension is blazing fast (probably the fastest out there) and is compatible with scientific articles as well as other sources of information, such as blogs, visual media (YouTube, Vimeo, etc.), and news article. Also, Zotero can save your library proxies, making your literature search way easier when off-campus or working from home without using an institutional VPN (hooray for mobility and flexibility!.
 
+One the biggest *pros* of using Zotero is their community, which is always happy to help troubleshoot through bugs or issues but also contribute to the improvement of Zotero's platform from its core or by creating plugins that skyrocket your productivity (for example, ZotFile and BetterBibTex).
+
+You can use Zotero without an account; however this will impede synchronization across devices. That said, signing up to Zotero is a breeze, they don't spam their user base and once signed up, you don't have to do it again, it'll remember you.
+
+Compatible with several document and text editors (MS Office Word, LibreOffice, Google Docs, Zettlr, VS Code, and the list go on).
 :::
 
 ::: {.panel}
 
 ### Mendeley {.panel-name}
 
-asdf
+[Mendeley](https://www.mendeley.com/) started as free independent reference manager but was lately acquired by Elsevier, the multibillion publisher (although it continues to be free to use. Mendeley also has a browser extension, to which you have to sign in every time you want to use (a bit of pain in my humble opinion) and is disappointingly slow, even when trying to clip journal articles from Elsevier (you would expect it would work faster within their site). While there no community led plugins, Mendeley offers a mostly hassle free experience if you're willing to wait relatively large amounts of time to clip a journal article and constantly having to sign into their browser extension.
+
+Expect to get loads of email (from which you can opt out of course) from them suggesting you papers sccording to your library and recent visits to Elsevier owned journals (talk about bias and telemetry, eh?).
+
+Compatible with MS Office Word and LibreOffice.
 
 :::
 
@@ -73,7 +85,9 @@ asdf
 
 ### EndNote {.panel-name}
 
-asdf
+[Endnote](https://endnote.com/) is probably that old, unskilled, and not very nice person asking to join the sport game you and youre friends are enjoying. Gained a lot of traction in earlier days, partly because it was the only option available, making its away across academics (which more often than not are not very flexible or not as open to adapt newer, better, more transparent software). Because of this, it has a decent following, but it certainly lacks the community support and flexibility from free and open source software and it is not free. To compound this, you have to pay each time they upgrade their software, which is pretty much a must otherwise the compatibility with popular document editors will be gone.
+
+Compatible with MS Office Word and LibreOffice
 
 :::
 
@@ -81,7 +95,7 @@ asdf
 
 ### Paperpile {.panel-name}
 
-asdf
+Never used it, but [Paperpile](https://paperpile.com/features/) advocates swear by its ability to handle .pdf files and annotations. It also integrates with Google Docs, in addition to MS Office.
 
 :::
 

@@ -50,16 +50,17 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #657422; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
+code span.cf { color: #00769e; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -73,9 +74,9 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
+code span.kw { color: #00769e; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
+code span.ot { color: #00769e; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
 code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
@@ -112,7 +113,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Got 528 tab problems"]},{"type":"character","attributes":{},"value":["but defeat ain't one.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Juan C. Sanchez-Arias"]},{"type":"character","attributes":{},"value":["https://www.juansanar.com/"]}]}]},{"type":"character","attributes":{},"value":["2022-04-05"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","categories"]}},"value":[{"type":"character","attributes":{},"value":["Got 528 tab problems"]},{"type":"character","attributes":{},"value":["but defeat ain't one.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Juan C. Sanchez-Arias"]},{"type":"character","attributes":{},"value":["https://www.juansanar.com/"]}]}]},{"type":"character","attributes":{},"value":["2022-04-05"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["PKM","R"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -429,10 +430,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     position: relative;
     margin-bottom: 2.5em;
     margin-top: 1.5em;
-  }
-
-  .figure img {
-    width: 100%;
   }
 
   .figure .caption {
@@ -1264,6 +1261,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
+        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
+          var fn = $(this).children()[0]
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
           return "<p>" + $('#ref-' + ref).html() + "</p>";
@@ -1278,6 +1281,31 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           placement: 'bottom-start'
         });
       });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
 
       // clear polling timer
       clearInterval(tid);
@@ -1377,6 +1405,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -1399,7 +1429,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
       });
     }
 
@@ -1438,7 +1468,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="got-528-tab-problems_files/header-attrs-2.13/header-attrs.js"></script>
+  <script src="got-528-tab-problems_files/header-attrs-2.14/header-attrs.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, orientation=auto"/>
   <meta name="description" content="Got 528 tab problems but defeat ain&#39;t one"/>
   <meta name="twitter:title" content="Blog - Got 528 tab problems"/>
@@ -1489,12 +1519,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="d-title">
 <h1>Got 528 tab problems</h1>
 <!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt-tag">PKM</div>
+<div class="dt-tag">R</div>
+</div>
 <!--/radix_placeholder_categories-->
 <p><p>but defeat ain’t one.</p></p>
 </div>
 
 <div class="d-byline">
-  Juan C. Sanchez-Arias <a href="https://www.juansanar.com/" class="uri">https://www.juansanar.com/</a> 
+  Juan C. Sanchez-Arias <a href="https://www.juansanar.com/"
+class="uri">https://www.juansanar.com/</a> 
   
 <br/>2022-04-05
 </div>
@@ -1522,67 +1557,111 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="img/2022-03-28-22-28-54.png" /></p>
 <blockquote>
-<p>How many times have you said to yourself: "I’ll leave this X number of tabs open for now and will check them later to complete (insert task)?</p>
+<p>How many times have you said to yourself: “I’ll leave this X number
+of tabs open for now and will check them later to complete (insert
+task)?</p>
 </blockquote>
-<p>The revolutionary introduction of tabs to browsers initiated by <a href="https://www.makeuseof.com/tag/which-browser-invented-tabs-3-common-myths-debunked/">“InternetWorks”</a> (developed by BookLink Technologies) and popularized by Mozilla Firefox has allowed users to open as many tabs as they want within a single browser window, limited only by the user’s RAM and tolerability to unreadable (and often unclickable) tabs on the browser title bar. This, combined with the increasingly available RAM in computers (my main desktop rig harbours 32 GB, for example) and the expandability of desktops within the same operating system session can quickly create a disaster of open tabs if one doesn’t pay attention to this matter.</p>
-<p>As shown in the image above, I’ve fallen into the bottomless pit of multiple browsers, with multiple tabs across multiple desktop instances. The result: 528 open tabs. Yes, 528 tabs. Open. All the time. Using Google Chrome.</p>
-<p><img src="https://tl360.b-cdn.net/wp-content/uploads/2016/11/Simple-Hacks-And-Best-Tools-To-Limit-Memory-Usage-In-Google-Chrome-1200x720.jpg" /></p>
-<p>This also means I haven’t shutdown my computer in a while and even when I did (due to priority security updates for Windows), I immediately restored my browser windows and every single one of those 528 tabs.</p>
+<p>The revolutionary introduction of tabs to browsers initiated by <a
+href="https://www.makeuseof.com/tag/which-browser-invented-tabs-3-common-myths-debunked/">“InternetWorks”</a>
+(developed by BookLink Technologies) and popularized by Mozilla Firefox
+has allowed users to open as many tabs as they want within a single
+browser window, limited only by the user’s RAM and tolerability to
+unreadable (and often unclickable) tabs on the browser title bar. This,
+combined with the increasingly available RAM in computers (my main
+desktop rig harbours 32 GB, for example) and the expandability of
+desktops within the same operating system session can quickly create a
+disaster of open tabs if one doesn’t pay attention to this matter.</p>
+<p>As shown in the image above, I’ve fallen into the bottomless pit of
+multiple browsers, with multiple tabs across multiple desktop instances.
+The result: 528 open tabs. Yes, 528 tabs. Open. All the time. Using
+Google Chrome.</p>
+<p><img
+src="https://tl360.b-cdn.net/wp-content/uploads/2016/11/Simple-Hacks-And-Best-Tools-To-Limit-Memory-Usage-In-Google-Chrome-1200x720.jpg" /></p>
+<p>This also means I haven’t shutdown my computer in a while and even
+when I did (due to priority security updates for Windows), I immediately
+restored my browser windows and every single one of those 528 tabs.</p>
 <blockquote>
 <p>But why? What is the reason underlying this chaos!?</p>
 </blockquote>
-<p>Without diving deep into the melting pot inside my head, such chaos is simply the result of <strong>disorganization</strong>. More specifically, <strong>disorganized thoughts and ideas</strong>. These 528 tabs represent 528 thoughts and ideas that were not written down, categorized, and interconnected in a timely and structured fashion (I won’t go over the reasons behind this, but let’s say it’s been busy times at Juan’s camp).</p>
-<p>In other words, I was using multiple tabs as a form of personal knowledge management system and <strong>-damn-</strong> it was an awful, terrible idea.</p>
+<p>Without diving deep into the melting pot inside my head, such chaos
+is simply the result of <strong>disorganization</strong>. More
+specifically, <strong>disorganized thoughts and ideas</strong>. These
+528 tabs represent 528 thoughts and ideas that were not written down,
+categorized, and interconnected in a timely and structured fashion (I
+won’t go over the reasons behind this, but let’s say it’s been busy
+times at Juan’s camp).</p>
+<p>In other words, I was using multiple tabs as a form of personal
+knowledge management system and <strong>-damn-</strong> it was an awful,
+terrible idea.</p>
 <blockquote>
-<p>Personal knowledge management? A <a href="https://en.wikipedia.org/wiki/Personal_knowledge_management">Personal Knowledgement Management (PKM)</a> is a process of colelcting information in a structured manner so it is retrievable, shareable, and escalable. In simpler terms, a system that can be used as your second brain. I will talk more about this in a separate post.</p>
+<p>Personal knowledge management? A <a
+href="https://en.wikipedia.org/wiki/Personal_knowledge_management">Personal
+Knowledgement Management (PKM)</a> is a process of colelcting
+information in a structured manner so it is retrievable, shareable, and
+escalable. In simpler terms, a system that can be used as your second
+brain. I will talk more about this in a separate post.</p>
 </blockquote>
 <p class="spoiler">
-I found a PKM that meets my needs and sort of behaves like a brain. Plus, it checks some of my favourite things: markdown-based, local first, and FOSS. This PKM is called <a href="https://www.dendron.so/">dendron</a>
+I found a PKM that meets my needs and sort of behaves like a brain.
+Plus, it checks some of my favourite things: markdown-based, local
+first, and FOSS. This PKM is called <a
+href="https://www.dendron.so/">dendron</a>
 </p>
-<p>It is <a href="https://twitter.com/hashtag/tidytuesday?src=hashtag_click">#TidyTuesday</a> after all, so let’s explore what were the most common words present in those open tabs.</p>
+<p>It is <a
+href="https://twitter.com/hashtag/tidytuesday?src=hashtag_click">#TidyTuesday</a>
+after all, so let’s explore what were the most common words present in
+those open tabs.</p>
 <h3 id="packages-to-use">Packages to use</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://stringr.tidyverse.org'>stringr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/juliasilge/tidytext'>tidytext</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://blog.fellstat.com/?cat=11'>wordcloud</a></span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://stringr.tidyverse.org'>stringr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/juliasilge/tidytext'>tidytext</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://blog.fellstat.com/?cat=11'>wordcloud</a></span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <h3 id="loading-data">Loading data</h3>
-<p>I’ve been using <a href="https://chrome.google.com/webstore/detail/tabcopy/micdllihgoppmejpecmkilggmaagfdmb">TabCopy</a> for most of my Chrome experience. It’s a pretty useful extension that lets users copy the tabs that are open on a browser window (and even across multiple browsers windows), which can be easily pasted and save in a text file for later use. I copied the tabs using the TabCopy “Extended Format”, where it generates a line with the name of the tab/website (i.e., the “title”) followed by the URL.</p>
+<p>I’ve been using <a
+href="https://chrome.google.com/webstore/detail/tabcopy/micdllihgoppmejpecmkilggmaagfdmb">TabCopy</a>
+for most of my Chrome experience. It’s a pretty useful extension that
+lets users copy the tabs that are open on a browser window (and even
+across multiple browsers windows), which can be easily pasted and save
+in a text file for later use. I copied the tabs using the TabCopy
+“Extended Format”, where it generates a line with the name of the
+tab/website (i.e., the “title”) followed by the URL.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tabs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"data/urls_2022-03-31.txt"</span>, col_names <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>tabs</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>tabs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"data/urls_2022-03-31.txt"</span>, col_names <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>tabs</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code># A tibble: 6 x 1
+<pre><code># A tibble: 6 × 1
   X1                                                                  
   &lt;chr&gt;                                                               
 1 Fig. 1: Cell composition of the adult human heart. | Nature         
 2 https://www.nature.com/articles/s41586-020-2797-4/figures/1         
-3 Quantitative cross-species translators of cardiac myocyte electroph~
-4 https://www.science.org/doi/10.1126/sciadv.abg0927?url_ver=Z39.88-2~
+3 Quantitative cross-species translators of cardiac myocyte electroph…
+4 https://www.science.org/doi/10.1126/sciadv.abg0927?url_ver=Z39.88-2…
 5 Bioconductor - RCy3                                                 
 6 https://bioconductor.org/packages/release/bioc/html/RCy3.html       </code></pre>
 </div>
 <h3 id="tidying-data">Tidying data</h3>
-<p>The above output shows that each website’s name is in <strong>odd</strong> rows with and URL’s in <strong>even</strong> rows. Because I like data frames, I want to have a column (variable) with each website title and another column with its respective URL. An easy way to do this is by creating dummies indexes to create a tidy dataframe.</p>
+<p>The above output shows that each website’s name is in
+<strong>odd</strong> rows with and URL’s in <strong>even</strong> rows.
+Because I like data frames, I want to have a column (variable) with each
+website title and another column with its respective URL. An easy way to
+do this is by creating dummies indexes to create a tidy dataframe.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>tabs</span><span class='op'>)</span>,<span class='fl'>2</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>odd_indexes</span>
-<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>tabs</span><span class='op'>)</span>,<span class='fl'>2</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>even_indexes</span>
-
-<span class='va'>tabs_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>tabs</span><span class='op'>[</span><span class='va'>odd_indexes</span>,<span class='op'>]</span>, <span class='va'>tabs</span><span class='op'>[</span><span class='va'>even_indexes</span>,<span class='op'>]</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>tabs_df</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"url_title"</span>, <span class='st'>"url"</span><span class='op'>)</span>
-
-<span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>tabs_df</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>tabs</span><span class='op'>)</span>,<span class='fl'>2</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>odd_indexes</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>tabs</span><span class='op'>)</span>,<span class='fl'>2</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>even_indexes</span></span>
+<span></span>
+<span><span class='va'>tabs_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>tabs</span><span class='op'>[</span><span class='va'>odd_indexes</span>,<span class='op'>]</span>, <span class='va'>tabs</span><span class='op'>[</span><span class='va'>even_indexes</span>,<span class='op'>]</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>tabs_df</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"url_title"</span>, <span class='st'>"url"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>tabs_df</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
 <colgroup>
@@ -1601,61 +1680,82 @@ I found a PKM that meets my needs and sort of behaves like a brain. Plus, it che
 <tr class="odd">
 <td style="text-align: left;">366</td>
 <td style="text-align: left;">SINGLE-LETTER AMINO ACID CODE</td>
-<td style="text-align: left;"><a href="http://130.88.97.239/bioactivity/aacodefrm.html" class="uri">http://130.88.97.239/bioactivity/aacodefrm.html</a></td>
+<td style="text-align: left;"><a
+href="http://130.88.97.239/bioactivity/aacodefrm.html"
+class="uri">http://130.88.97.239/bioactivity/aacodefrm.html</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">367</td>
-<td style="text-align: left;">The developmental transcriptome of the human heart | Scientific Reports</td>
-<td style="text-align: left;"><a href="https://www.nature.com/articles/s41598-018-33837-6#Sec10" class="uri">https://www.nature.com/articles/s41598-018-33837-6#Sec10</a></td>
+<td style="text-align: left;">The developmental transcriptome of the
+human heart | Scientific Reports</td>
+<td style="text-align: left;"><a
+href="https://www.nature.com/articles/s41598-018-33837-6#Sec10"
+class="uri">https://www.nature.com/articles/s41598-018-33837-6#Sec10</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">368</td>
-<td style="text-align: left;">The Transitional Heart: From Early Embryonic and Fetal Development to Neonatal Life - FullText - Fetal Diagnosis and Therapy 2020, Vol. 47, No. 5 - Karger Publishers</td>
-<td style="text-align: left;"><a href="https://www.karger.com/Article/Fulltext/501906" class="uri">https://www.karger.com/Article/Fulltext/501906</a></td>
+<td style="text-align: left;">The Transitional Heart: From Early
+Embryonic and Fetal Development to Neonatal Life - FullText - Fetal
+Diagnosis and Therapy 2020, Vol. 47, No. 5 - Karger Publishers</td>
+<td style="text-align: left;"><a
+href="https://www.karger.com/Article/Fulltext/501906"
+class="uri">https://www.karger.com/Article/Fulltext/501906</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">369</td>
-<td style="text-align: left;">Fig. 1: Cell composition of the adult human heart. | Nature</td>
-<td style="text-align: left;"><a href="https://www.nature.com/articles/s41586-020-2797-4/figures/1" class="uri">https://www.nature.com/articles/s41586-020-2797-4/figures/1</a></td>
+<td style="text-align: left;">Fig. 1: Cell composition of the adult
+human heart. | Nature</td>
+<td style="text-align: left;"><a
+href="https://www.nature.com/articles/s41586-020-2797-4/figures/1"
+class="uri">https://www.nature.com/articles/s41586-020-2797-4/figures/1</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">370</td>
-<td style="text-align: left;">Quantitative cross-species translators of cardiac myocyte electrophysiology: Model training, experimental validation, and applications</td>
-<td style="text-align: left;"><a href="https://www.science.org/doi/10.1126/sciadv.abg0927?url_ver=Z39.88-2003&amp;rfr_id=ori:rid:crossref.org&amp;rfr_dat=cr_pub%20%200pubmed" class="uri">https://www.science.org/doi/10.1126/sciadv.abg0927?url_ver=Z39.88-2003&amp;rfr_id=ori:rid:crossref.org&amp;rfr_dat=cr_pub%20%200pubmed</a></td>
+<td style="text-align: left;">Quantitative cross-species translators of
+cardiac myocyte electrophysiology: Model training, experimental
+validation, and applications</td>
+<td style="text-align: left;"><a
+href="https://www.science.org/doi/10.1126/sciadv.abg0927?url_ver=Z39.88-2003&amp;rfr_id=ori:rid:crossref.org&amp;rfr_dat=cr_pub%20%200pubmed"
+class="uri">https://www.science.org/doi/10.1126/sciadv.abg0927?url_ver=Z39.88-2003&amp;rfr_id=ori:rid:crossref.org&amp;rfr_dat=cr_pub%20%200pubmed</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">371</td>
 <td style="text-align: left;">Bioconductor - RCy3</td>
-<td style="text-align: left;"><a href="https://bioconductor.org/packages/release/bioc/html/RCy3.html" class="uri">https://bioconductor.org/packages/release/bioc/html/RCy3.html</a></td>
+<td style="text-align: left;"><a
+href="https://bioconductor.org/packages/release/bioc/html/RCy3.html"
+class="uri">https://bioconductor.org/packages/release/bioc/html/RCy3.html</a></td>
 </tr>
 </tbody>
 </table>
 </div>
 <h3 id="wordcloud">Wordcloud</h3>
-<p>Now that we have a tidy data frame (<code>tabs_df</code>), let’s create a <strong>wordcloud</strong> with the help of <code>tidytext</code> and <code>wordcloud</code> packages and see what I have been reading heavily lately on the web.</p>
+<p>Now that we have a tidy data frame (<code>tabs_df</code>), let’s
+create a <strong>wordcloud</strong> with the help of
+<code>tidytext</code> and <code>wordcloud</code> packages and see what I
+have been reading heavily lately on the web.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>text_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>line <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>371</span>, text <span class='op'>=</span> <span class='va'>tabs_df</span><span class='op'>$</span><span class='va'>url_title</span><span class='op'>)</span>
-
-<span class='va'>text_df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens</a></span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>text</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>text_unnested</span>
-
-<span class='va'>text_unnested</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='va'>word</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='st'>"the"</span>, <span class='st'>"and"</span>, <span class='st'>"of"</span>, <span class='st'>"in"</span>, <span class='st'>"a"</span>,
-  <span class='st'>"to"</span>, <span class='st'>"for"</span>, <span class='st'>"1"</span>, <span class='st'>"2"</span>, <span class='st'>"at"</span>, <span class='st'>"is"</span>,
-  <span class='st'>"are"</span>, <span class='st'>"as"</span>, <span class='st'>"b"</span>, <span class='st'>"an"</span>, <span class='st'>"on"</span>,
-  <span class='st'>"i"</span>, <span class='st'>"by"</span>, <span class='st'>"e"</span>, <span class='st'>"it"</span>, <span class='st'>"its"</span>, <span class='st'>"etc"</span>
-  <span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>word</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>text_unnested.filtered</span>
-
-<span class='fu'><a href='https://rdrr.io/pkg/wordcloud/man/wordcloud.html'>wordcloud</a></span><span class='op'>(</span>words <span class='op'>=</span> <span class='va'>text_unnested.filtered</span><span class='op'>$</span><span class='va'>word</span>,
-          freq <span class='op'>=</span> <span class='va'>text_unnested.filtered</span><span class='op'>$</span><span class='va'>n</span>, 
-          min.freq <span class='op'>=</span> <span class='fl'>1</span>, max.words <span class='op'>=</span> <span class='fl'>200</span>, 
-          random.order <span class='op'>=</span> <span class='cn'>FALSE</span>, rot.per <span class='op'>=</span> <span class='fl'>0.35</span>, 
-          colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span><span class='op'>(</span><span class='fu'>viridis</span><span class='fu'>::</span><span class='fu'><a href='https://sjmgarnier.github.io/viridisLite/reference/viridis.html'>magma</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>131100</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>text_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>line <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>371</span>, text <span class='op'>=</span> <span class='va'>tabs_df</span><span class='op'>$</span><span class='va'>url_title</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>text_df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens</a></span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>text</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>text_unnested</span></span>
+<span></span>
+<span><span class='va'>text_unnested</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='va'>word</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span>  <span class='st'>"the"</span>, <span class='st'>"and"</span>, <span class='st'>"of"</span>, <span class='st'>"in"</span>, <span class='st'>"a"</span>,</span>
+<span>  <span class='st'>"to"</span>, <span class='st'>"for"</span>, <span class='st'>"1"</span>, <span class='st'>"2"</span>, <span class='st'>"at"</span>, <span class='st'>"is"</span>,</span>
+<span>  <span class='st'>"are"</span>, <span class='st'>"as"</span>, <span class='st'>"b"</span>, <span class='st'>"an"</span>, <span class='st'>"on"</span>,</span>
+<span>  <span class='st'>"i"</span>, <span class='st'>"by"</span>, <span class='st'>"e"</span>, <span class='st'>"it"</span>, <span class='st'>"its"</span>, <span class='st'>"etc"</span></span>
+<span>  <span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>word</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>text_unnested.filtered</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/pkg/wordcloud/man/wordcloud.html'>wordcloud</a></span><span class='op'>(</span>words <span class='op'>=</span> <span class='va'>text_unnested.filtered</span><span class='op'>$</span><span class='va'>word</span>,</span>
+<span>          freq <span class='op'>=</span> <span class='va'>text_unnested.filtered</span><span class='op'>$</span><span class='va'>n</span>, </span>
+<span>          min.freq <span class='op'>=</span> <span class='fl'>1</span>, max.words <span class='op'>=</span> <span class='fl'>200</span>, </span>
+<span>          random.order <span class='op'>=</span> <span class='cn'>FALSE</span>, rot.per <span class='op'>=</span> <span class='fl'>0.35</span>, </span>
+<span>          colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span><span class='op'>(</span><span class='fu'>viridis</span><span class='fu'>::</span><span class='fu'><a href='https://sjmgarnier.github.io/viridisLite/reference/viridis.html'>magma</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>131100</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="got-528-tab-problems_files/figure-html5/wordcloud-1.png" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

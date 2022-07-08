@@ -9,6 +9,9 @@ date: 2022-04-05
 output:
   distill::distill_article:
     self_contained: false
+categories:
+  - PKM
+  - R
 ---
 
 ```{r metadata, message=FALSE, include=FALSE, echo=FALSE}
