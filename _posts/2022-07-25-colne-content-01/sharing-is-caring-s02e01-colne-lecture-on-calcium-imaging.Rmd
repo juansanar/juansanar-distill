@@ -15,6 +15,25 @@ categories:
   - COLNE
 ---
 
+```{r metadata, message=FALSE, include=FALSE, echo=FALSE}
+library(metathis)
+meta() %>%
+  meta_description(
+    "Lecture on methods in neuroscience (calcium imaging) for the Colegio Colombiano de Neurociencias"
+  ) %>%
+  #meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
+  meta_viewport() %>%
+  meta_social(
+    title = "Blog - COLNE Tertulia Metodologica S02E01",
+    url = "https://www.juansanar.com/posts/2022-07-25-colne-content-01/",
+    image = "https://commons.wikimedia.org/wiki/File:Neuronal_calcium.gif",
+    image_alt = "Calcium imaging on a neuron. The neuron fluorescence intensity rises as intracellular calcium increases. Source: Wiki Commons",
+    og_type = "website",
+    og_author = c("Juan C. Sanchez-Arias"),
+    twitter_card_type = "summary",
+    twitter_creator = "@juan_sanar"
+  )
+```
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
