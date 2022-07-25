@@ -1,5 +1,26 @@
 [
   {
+    "path": "posts/2022-07-25-colne-content-01/",
+    "title": "Sharing is caring S02E01: COLNE Lecture on Calcium Imaging",
+    "description": "Slide deck from my lecture on Neuroscience Methods (Tertulia Metodologica) for the Colegio Colombiuano de Neurociencias (COLNE).",
+    "author": [
+      {
+        "name": "Juan C. Sanchez-Arias",
+        "url": "https://www.juansanar.com/"
+      }
+    ],
+    "date": "2022-07-25",
+    "categories": [
+      "Research",
+      "Espanol",
+      "COLNE"
+    ],
+    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2022-07-25T14:41:06-07:00",
+    "input_file": "sharing-is-caring-s02e01-colne-lecture-on-calcium-imaging.knit.md"
+  },
+  {
     "path": "posts/2022-07-04-zotero-01/",
     "title": "Need help managing your references? \"El Zotero\" to the rescue!",
     "description": "In the Lands in Between bibliographies, select Zotero as your hero.",

@@ -1,0 +1,25 @@
+---
+title: "Sharing is caring S02E01: COLNE Lecture on Calcium Imaging"
+description: |
+  Slide deck from my lecture on Neuroscience Methods (Tertulia Metodologica) for the Colegio Colombiuano de Neurociencias (COLNE).
+author:
+  - name: Juan C. Sanchez-Arias
+    url: https://www.juansanar.com/
+date: 2022-07-25
+output:
+  distill::distill_article:
+    self_contained: false
+categories: 
+  - Research
+  - Espanol
+  - COLNE
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR7yaPDeqAJil8fKxAvm714Mn-9Hc9wJRWIovwGxAmXFAG7-r9mfxlyR5tROeIPrfS5MOxUnoqo4DH0/embed?start=false&loop=false&delayms=5000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+
