@@ -26,8 +26,8 @@ meta() %>%
   meta_social(
     title = "Blog - COLNE Tertulia Metodologica S02E01",
     url = "https://www.juansanar.com/posts/2022-07-25-colne-content-01/",
-    image = "https://commons.wikimedia.org/wiki/File:Neuronal_calcium.gif",
-    image_alt = "Calcium imaging on a neuron. The neuron fluorescence intensity rises as intracellular calcium increases. Source: Wiki Commons",
+    image = "https://upload.wikimedia.org/wikipedia/commons/f/ff/Neuronal_calcium.gif?20200526062638",
+    image_alt = "",
     og_type = "website",
     og_author = c("Juan C. Sanchez-Arias"),
     twitter_card_type = "summary",
