@@ -13,6 +13,7 @@ categories:
   - Research
   - Espanol
   - COLNE
+preview: 'https://www.juansanar.com/posts/2022-07-25-colne-content-01/img/neuronal_calcium.gif'
 ---
 
 ```{r metadata, message=FALSE, include=FALSE, echo=FALSE}
@@ -26,8 +27,8 @@ meta() %>%
   meta_social(
     title = "Blog - COLNE Tertulia Metodologica S02E01",
     url = "https://www.juansanar.com/posts/2022-07-25-colne-content-01",
-    image = "https://www.juansanar.com/posts/2022-07-25-colne-content-01/img/mit_geci-neurons.jpg",
-    image_alt = "",
+    image = "https://www.juansanar.com/posts/2022-07-25-colne-content-01/img/neuronal_calcium.gif",
+    image_alt = "Timelapse of a neuron-like cell in culture with a calcium indicaotr. Fluorescent intensity increases as intracelullar calcium rises.",
     og_type = "website",
     og_author = c("Juan C. Sanchez-Arias"),
     twitter_card_type = "summary",
