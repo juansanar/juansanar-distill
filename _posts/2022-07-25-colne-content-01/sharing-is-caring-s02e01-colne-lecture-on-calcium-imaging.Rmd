@@ -26,7 +26,7 @@ meta() %>%
   meta_social(
     title = "Blog - COLNE Tertulia Metodologica S02E01",
     url = "https://www.juansanar.com/posts/2022-07-25-colne-content-01/",
-    image = "https://upload.wikimedia.org/wikipedia/commons/f/ff/Neuronal_calcium.gif?20200526062638",
+    image = "https://www.juansanar.com/posts/2022-07-25-colne-content-01/img/mit_geci-neurons.jpg",
     image_alt = "",
     og_type = "website",
     og_author = c("Juan C. Sanchez-Arias"),
