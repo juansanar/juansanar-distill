@@ -100,3 +100,11 @@ ul > li::marker {
     font-weight: 700;
     font-size: 1.125em;
 }
+
+/* .thumbnail {
+    padding: 0px!important;
+    margin: 0px!important;
+    max-width: 20%!important;
+    height: auto!important;
+    vertical-align: text-top!important;
+}*/
