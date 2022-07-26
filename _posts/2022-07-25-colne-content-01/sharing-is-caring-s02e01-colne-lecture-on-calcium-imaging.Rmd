@@ -13,7 +13,7 @@ categories:
   - Research
   - Espanol
   - COLNE
-preview: 'https://www.juansanar.com/posts/2022-07-25-colne-content-01/img/mit_geci-neurons.jpg'
+preview: 'https://www.juansanar.com/posts/2022-07-25-colne-content-01/img/mit_geci_neurons.jpg'
 ---
 
 ```{r metadata, message=FALSE, include=FALSE, echo=FALSE}
@@ -27,7 +27,7 @@ meta() %>%
   meta_social(
     title = "Blog - COLNE Tertulia Metodologica S02E01",
     url = "https://www.juansanar.com/posts/2022-07-25-colne-content-01",
-    image = "https://www.juansanar.com/posts/2022-07-25-colne-content-01/img/mit_geci-neurons.jpg",
+    image = "https://www.juansanar.com/posts/2022-07-25-colne-content-01/img/mit_geci_neurons.jpg",
     image_alt = "Fluorescent cerebral cortex neurons expressing a genetically encoded calcium indicator. Source: MIT News",
     og_type = "website",
     og_author = c("Juan C. Sanchez-Arias"),
