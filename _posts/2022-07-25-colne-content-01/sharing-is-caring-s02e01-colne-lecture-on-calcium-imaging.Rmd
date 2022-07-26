@@ -1,7 +1,7 @@
 ---
 title: "Sharing is caring S02E01: COLNE Lecture on Calcium Imaging"
 description: |
-  Slide deck from my lecture on Neuroscience Methods (Tertulia Metodologica) for the Colegio Colombiuano de Neurociencias (COLNE).
+  Slide deck from my lecture on Neuroscience Methods (Tertulia Metodologica) for the Colegio Colombiano de Neurociencias (COLNE).
 author:
   - name: Juan C. Sanchez-Arias
     url: https://www.juansanar.com/
@@ -28,7 +28,7 @@ meta() %>%
     title = "Blog - COLNE Tertulia Metodologica S02E01",
     url = "https://www.juansanar.com/posts/2022-07-25-colne-content-01",
     image = "https://www.juansanar.com/posts/2022-07-25-colne-content-01/img/mit_geci-neurons.jpg",
-    image_alt = "Timelapse of a neuron-like cell in culture with a calcium indicaotr. Fluorescent intensity increases as intracelullar calcium rises.",
+    image_alt = "Fluorescent cerebral cortex neurons expressing a genetically encoded calcium indicator. Source: MIT News",
     og_type = "website",
     og_author = c("Juan C. Sanchez-Arias"),
     twitter_card_type = "summary",
@@ -41,5 +41,3 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR7yaPDeqAJil8fKxAvm714Mn-9Hc9wJRWIovwGxAmXFAG7-r9mfxlyR5tROeIPrfS5MOxUnoqo4DH0/embed?start=false&loop=false&delayms=5000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-
-
