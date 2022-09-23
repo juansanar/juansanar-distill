@@ -11,7 +11,7 @@ links:
   - label: '<i class="fab fa-linkedin"></i> LinkedIn'
     url: "https://www.linkedin.com/in/juancsanchezarias/"
   - label: '<i class="fas fa-envelope"></i> Email'
-    url: "mailto:juansa@uvic.ca"
+    url: "mailto:jucamilo.sanchez@gmail.com"
   - label: '<i class="fas fa-graduation-cap"></i> Google Scholar'
     url: 'https://scholar.google.com/citations?user=2hJ3XvwAAAAJ&hl=en'
   - label: '<i class="fas fa-file-pdf"></i> CV'
