@@ -49,7 +49,19 @@ meta() %>%
  
 ## Bio
 
-Juan C. Sanchez-Arias<sup>(he/him)</sup> is a medical doctor and neuroscientist working as a Scientist II, Data Extraction at [BenchSci](https://www.benchsci.com/) where he uses his experience in medicine, neurobiology, biomedical research, and experimental design to magnify the impact of BenchSci's platform on empowering preclinical scientists with the most advanced AI to increase the speed and quality of their research. Previously, he was a Postdoctoral Fellow in the Division of Medical Science at the University of Victoria funded by a Michael Smith Health Research BC Award. Juan's research experience includes investigating the cellular and molecular mechanisms underlying brain and heart development, neuronal network and synapse formation, and onset of inherited cardiac arrhythmias combining model organism experimentation, advanced microscopy, and computational biology. His other interests include pathophysiological mechanisms of human disease, bio-image analysis automation, open science, and science outreach and communication.
+Juan C. Sanchez-Arias<sup>(he/him)</sup> is a medical doctor and neuroscientist working as a **Therapeutic Area Tech Lead (Neuroscience)** at [BenchSci](https://www.benchsci.com/) where he uses his experience in medicine, neurobiology, biomedical research, and experimental design to magnify the impact of BenchSci's platform on empowering preclinical scientists with the most advanced AI to increase the speed and quality of their research. Previously, he was a Postdoctoral Fellow in the Division of Medical Science at the University of Victoria funded by a Michael Smith Health Research BC Award. Juan's research experience includes investigating the cellular and molecular mechanisms underlying brain and heart development, neuronal network and synapse formation, and onset of inherited cardiac arrhythmias combining model organism experimentation, advanced microscopy, and computational biology. His other interests include pathophysiological mechanisms of human disease, bio-image analysis automation, open science, and science outreach and communication.
+
+## Experience
+
+**BenchSci** | Therapeutic Area Tech Lead (Neuroscience) | July 2023 - present
+
+**BenchSci** | Scientist II, Data Extraction | June 2022 - June 2023
+
+**University of Victoria** | Postdoctoral Fellow | August 2020 - June 2022
+
+**Hospital Universitario del Valle ESE** | Medical Intern | September 2013 - September 2014
+
+**Centro de Estudios Cerebrales, Universidad del Valle** | Research Intern | February 2014 - July 2014
 
 ## Education
 
@@ -60,27 +72,4 @@ Juan C. Sanchez-Arias<sup>(he/him)</sup> is a medical doctor and neuroscientist 
 **Universidad del Valle, School of Medicine** | Cali, Valle, Colombia
 
 *Doctor in Medicine* | August 2007 - September 2014
-
-## Experience
-
-**BenchSci** | Scientific Associate (Experimental Data) | June 2022 - Present
-
-**University of Victoria** | Postdoctoral Fellow | August 2020 - June 2022
-
-**Hospital Universitario del Valle ESE** | Medical Intern | September 2013 - September 2014
-
-**Centro de Estudios Cerebrales, Universidad del Valle** | Research Intern | February 2014 - July 2014
-
-## Memberships
-
-**Canadian Society for Molecular Bioscience** | 2022 - Present
-
-**Canadian Cardiovascular Society** | 2021 - Present
-
-**Colegio Colombiano de Neurociencias** | 2021 - Present
-
-**Society for Neuroscience** | 2016 - 2022
-
-**Canadian Association for Neuroscience** | 2015 - 2022
-
 
