@@ -4,7 +4,7 @@ site: distill::distill_website
 image: img/juansanar_pro-pic_02_165kb.jpg
 favicon: img/icon.png 
 links:
-  - label: '<i class="fab fa-twitter"></i> Twitter'
+  - label: '<i class="fa-brands fa-square-x-twitter"></i> Twitter'
     url: "https://twitter.com/juan_sanar"
   - label: '<i class="fab fa-github"></i> GitHub'
     url: "https://github.com/juansanar"
